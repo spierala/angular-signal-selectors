@@ -8,7 +8,7 @@ This repo explores the basics of creating Signal selectors, similar to NgRx/Mini
 The implementation should use Signals only... mostly because Signals support memoization out of the box.
 
 **Why Signal Selectors?**
-- Selector functions can be pure functions and live outside the class
+- Selector functions can be pure functions and can live outside the TypeScript class
 - The selector functions can be composed (similar to NgRx/MiniRx `createSelector`)
 - Selector functions are easy to test
 
