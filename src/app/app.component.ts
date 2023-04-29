@@ -2,6 +2,11 @@ import {Component, computed, Signal, signal} from '@angular/core';
 
 type CounterState = { count: number }
 
+// Selectors
+const getCountSelector = (state: Signal<CounterState>) => computed(() => state()['count']);
+// getDoubleCount reuses `getCountSelector`
+const getDoubleCountSelector = (state: Signal<CounterState>) => computed(() => getCountSelector(state)() * 2);
+
 @Component({
   selector: 'app-root',
   template: `
@@ -13,16 +18,12 @@ type CounterState = { count: number }
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  // Selectors
-  private getCountSelector = (state: Signal<CounterState>) => computed(() => state()['count']);
-  private getDoubleCountSelector = (state: Signal<CounterState>) => computed(() => this.getCountSelector(state)() * 2);
-
   // State
   private counterState = signal({count: 1});
 
   // Select state with Selectors
-  count = this.getCountSelector(this.counterState);
-  doubleCount = this.getDoubleCountSelector(this.counterState);
+  count = getCountSelector(this.counterState);
+  doubleCount = getDoubleCountSelector(this.counterState);
 
   // Update State
   inc() {
