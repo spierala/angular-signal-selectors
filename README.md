@@ -16,6 +16,11 @@ The implementation should use Signals only... mostly because Signals support mem
 
 The example is working partially. See the issue below.
 
+The selector functions are still "handcrafted", but we can see already the important parts:
+
+- a selector can depend on another one
+- a selector function accepts Signal state as input and returns a (partial) Signal state 
+
 ```ts
 import {Component, computed, Signal, signal} from '@angular/core';
 
