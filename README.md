@@ -2,13 +2,20 @@
 
 A small Angular Signal Selector experiment...
 
-It would be great, to select Signal state with predefined selector functions: 
+It would be great, to select Signal state with predefined selector functions.
+
+This repo explores the basics of creating Signal selectors, similar to NgRx/MiniRx `createSelector`.
+The implementation should use Signals only... mostly because Signals support memoization out of the box.
+
+**Why Signal Selectors?**
 - Selector functions can be pure functions and live outside the class
 - The selector functions can be composed (similar to NgRx/MiniRx `createSelector`)
+- Selector functions are easy to test
 
-But currently it works only partially...
+**Example**
 
-Small example:
+The example is working partially. See the issue below.
+
 ```ts
 import {Component, computed, Signal, signal} from '@angular/core';
 
